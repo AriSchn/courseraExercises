@@ -48,6 +48,19 @@ def gradientfunction(theta,x,y):
         grad[i] = np.sum(term)/m
         
     return grad
+
+def plotDecisionBoundary(theta,x):
+    index_min = np.where(x[:,1] == np.amin(x[:,1]))
+    index_max = np.where(x[:,1] == np.amax(x[:,1]))
+
+    x1 = np.array(x[index_min])
+    x2 = np.array(x[index_max])
+
+    x1 = x1[:,1]
+    x2 = x2[:,1]
+    x_test = np.append(x1,x2,axis=0)
+    y_test = -(theta[0] + theta[1]*x_test)/theta[2]
+    plt.plot(x_test,y_test,'r')
     
 #read the dataset   
 data = pd.read_csv('ex2data1.txt',header = None, names = ['Score1','Score2','Admitted'])
@@ -68,7 +81,5 @@ cost = costfunction(result[0], x, y)
 
 theta = result[0]
 
-#plot Boundary
-
-
-
+plotdata(data)
+plotDecisionBoundary(theta,x)
