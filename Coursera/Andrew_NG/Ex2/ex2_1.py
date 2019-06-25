@@ -25,7 +25,7 @@ def plotdata(data):
     
 def sigmoid(z):
     G = 1/(1 + np.exp(-z))
-    G.shape = (len(x),1)
+    G.shape = (len(z),1)
     return G
 
 def costfunction(theta,x,y):
@@ -83,3 +83,5 @@ theta = result[0]
 
 plotdata(data)
 plotDecisionBoundary(theta,x)
+
+
